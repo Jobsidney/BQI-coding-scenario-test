@@ -350,7 +350,24 @@ function getAdultNames(users) {
 // Scenario 5: Asynchronous Data Handling
 async function fetchUserPosts(apiUrl) {
     // Implement your solution here
+    return fetch(apiUrl)
+    .then(response => {
+        if (!response.ok) {
+            //i always check for erros first to make the algorithm more efficient and fast.. since for example if you check for the data first with if statement,and it doesnt get it, it executes the next statement, until it reaches the error statement checker. but if we check for the error first it will stop from running the next stateent.
+            // i have added this "thrown" error which will then be caught by the catch block if anything wrong happens here
+            throw new Error(`Error: ${response.status} - ${response.statusText}`);
+        }
+        return response.json();
+    })
+    .then(posts => {
+        console.log("Fetched user posts:", posts);
+        return posts;
+    })
+    .catch(error => {
+        console.error("Failed to fetch user posts:", error);
+    });
 }
+fetchUserPosts('https://catfact.ninja/fact')
 
 
 // Scenario 6: Memoization
