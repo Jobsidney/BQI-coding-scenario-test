@@ -238,12 +238,114 @@ especially when dealing with large datasets or complex computations
        
  */
 
-        
+
 
 // Scenario 4: Data Manipulation
+const ages=[
+    {"name": "John", "age": 25},
+    {"name": "Jane", "age": 30},
+    {"name": "Job Sidney", "age": 22},
+    {"name": "Bob", "age": 35},
+    {"name": "Charlie", "age": 28},
+    {"name": "Diana", "age": 45},
+    {"name": "Edward", "age": 50},
+    {"name": "Fiona", "age": 27},
+    {"name": "George", "age": 33},
+    {"name": "Hannah", "age": 41},
+    {"name": "Job Sidney", "age": 22},
+    {"name": "Bob", "age": 35},
+    {"name": "Charlie", "age": 28},
+    {"name": "Diana", "age": 45},
+    {"name": "Edward", "age": 50},
+    {"name": "Fiona", "age": 27},
+    {"name": "George", "age": 33},
+    {"name": "Hannah", "age": 41},
+    {"name": "Job Sidney", "age": 22},
+    {"name": "Bob", "age": 35},
+    {"name": "Charlie", "age": 28},
+    {"name": "Diana", "age": 45},
+    {"name": "Edward", "age": 50},
+    {"name": "Fiona", "age": 27},
+    {"name": "George", "age": 33},
+    {"name": "Hannah", "age": 41},
+    {"name": "Job Sidney", "age": 22},
+    {"name": "Bob", "age": 35},
+    {"name": "Charlie", "age": 28},
+    {"name": "Diana", "age": 45},
+    {"name": "Edward", "age": 50},
+    {"name": "Fiona", "age": 27},
+    {"name": "George", "age": 33},
+    {"name": "Hannah", "age": 41},
+    {"name": "Job Sidney", "age": 22},
+    {"name": "Bob", "age": 35},
+    {"name": "Charlie", "age": 28},
+    {"name": "Diana", "age": 45},
+    {"name": "Edward", "age": 50},
+    {"name": "Fiona", "age": 27},
+    {"name": "George", "age": 33},
+    {"name": "Hannah", "age": 41},
+    {"name": "Job Sidney", "age": 22},
+    {"name": "Bob", "age": 35},
+    {"name": "Charlie", "age": 28},
+    {"name": "Diana", "age": 45},
+    {"name": "Edward", "age": 50},
+    {"name": "Fiona", "age": 27},
+    {"name": "George", "age": 33},
+    {"name": "Hannah", "age": 41},{"name": "Job Sidney", "age": 22},
+    {"name": "Bob", "age": 35},
+    {"name": "Charlie", "age": 28},
+    {"name": "Diana", "age": 45},
+    {"name": "Edward", "age": 50},
+    {"name": "Fiona", "age": 27},
+    {"name": "George", "age": 33},
+    {"name": "Hannah", "age": 41}
+    ,{"name": "Job Sidney", "age": 22},
+    {"name": "Bob", "age": 35},
+    {"name": "Charlie", "age": 28},
+    {"name": "Diana", "age": 45},
+    {"name": "Edward", "age": 50},
+    {"name": "Fiona", "age": 27},
+    {"name": "George", "age": 33},
+    {"name": "Hannah", "age": 41},
+    {"name": "Job Sidney", "age": 22},
+    {"name": "Bob", "age": 35},
+    {"name": "Charlie", "age": 28},
+    {"name": "Diana", "age": 45},
+    {"name": "Edward", "age": 50},
+    {"name": "Fiona", "age": 27},
+    {"name": "George", "age": 33},
+    {"name": "Hannah", "age": 41},
+    {"name": "Job Sidney", "age": 22},
+    {"name": "Bob", "age": 35},
+    {"name": "Charlie", "age": 28},
+    {"name": "Diana", "age": 45},
+    {"name": "Edward", "age": 50},
+    {"name": "Fiona", "age": 27},
+    {"name": "George", "age": 33},
+    {"name": "Hannah", "age": 41},
+    {"name": "Job Sidney", "age": 22},
+    {"name": "Bob", "age": 35},
+    {"name": "Charlie", "age": 28},
+    {"name": "Diana", "age": 45},
+    {"name": "Edward", "age": 50},
+    {"name": "Fiona", "age": 27},
+    {"name": "George", "age": 2},
+    {"name": "Hannah", "age": 3}
+]
 function getAdultNames(users) {
     // Implement your solution here
+
+    //NOTE: my solution has a time complexity of O(n) same as using array iteration like filter() and map. 
+    // the space complexity will be O(m) since my solution has only one additional array (adultsList) that is used to store the names of adult users.
+    const adultsList = [];
+    for (let i = 0; i < users.length; i++) {
+        if (users[i].age >= 18) {
+            adultsList.push(users[i].name);
+        }
+    }
+    return adultsList;
 }
+//console.log(getAdultNames(ages));
 
 // Scenario 5: Asynchronous Data Handling
 async function fetchUserPosts(apiUrl) {
