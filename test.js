@@ -373,4 +373,50 @@ fetchUserPosts('https://catfact.ninja/fact')
 // Scenario 6: Memoization
 function memoize(fn) {
     // Implement your solution here
-}
+/* Memoization is an optimization technique that makes applications more
+     efficient and hence faster. This is achieved by storing computation
+      results in cache, and retrieving that same information from the cache the next time it's needed instead of computing it again   */ 
+
+      /* 
+      Therefore memoization function is a higher-order function that enhances the performance of another function by caching its results. It basically stores the results of repetitive function calls by caching..that is why its an optimization technique
+      */
+
+      const cache = new Map();
+      return function(...args) {
+          const key = generateKey(args);
+  
+          if (cache.has(key)) {
+              return cache.get(key);
+          }
+  
+          const result = fn(...args);
+          cache.set(key, result);  
+          return result;
+      };
+  }
+  
+  function generateKey(args) {
+      return args.map(arg => 
+          typeof arg === 'object' 
+              ? JSON.stringify(arg, Object.keys(arg).sort()) 
+              : arg
+      ).join('|');
+  }
+  
+  function processData(user, options) {
+      console.log('Processing data...');
+      return `${user.name} - ${options.theme}`;
+  }
+  const memoized_Processed_Data = memoize(processData);
+  
+  const first_User = { name: 'Job Sidney', years: 32 };
+  const themeOption1 = { theme: 'dark', layout: 'grid' };
+  
+  const second_User = { name: 'Bob', yearse: 29 };
+  const themeOption2 = { theme: 'light', layout: 'list' };
+  //TIm trying now to call and to see what input ill get/ testing my code. This will  Computes and returns "Job Sidney - dark"
+  console.log(memoized_Processed_Data(first_User, themeOption1));
+  // The below implimentation Fetches from cache and returns "Job Sidney - dark" . the same thing will happen in the functions calls i have made after  that just for testing
+  console.log(memoized_Processed_Data(first_User, themeOption1));
+  console.log(memoized_Processed_Data(second_User, themeOption2));
+  console.log(memoized_Processed_Data(second_User, themeOption2));
