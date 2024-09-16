@@ -174,12 +174,30 @@ function incrementArray(arr) {
 console.log(incrementArray([4,3,4,1,6,7,8]))
 
 // Scenario 2: Closures
+/*
+Closures is a function that retains access to its lexical scope, even when the function is executed outside that scope. This allows functions to 
+remember the environment in which they were created, which includes any variables that were in scope at the time the closure was defined.
+Closures allow functions to access variables from their parent scope even after the parent function has finished executing. 
+*/
 function outer() {
     let count = 0;
-    return function() {
-        // Implement your solution here
+    return function(action) {
+         // Implement your solution here
+        if (action === 'increment') {
+            count++;
+            return `Count is now ${count}.`;
+        } else if (action === 'reset') {
+            count = 0;
+            return 'Count has been reset.';
+        } else {
+            return 'Unknown action. Use "increment" or "reset".';
+        }    
     };
 }
+const operation = outer();
+console.log(operation('increment'));// this will print the first count= 1
+console.log(operation('increment'));//this line will print the second count after getting the computed count abouve. then it will be 2. hence it will remember the 
+
 
 // Scenario 3: Performance Optimization
 
