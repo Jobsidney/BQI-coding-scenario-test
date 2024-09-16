@@ -145,8 +145,13 @@ function removeDuplicates(arr) {
 
 // Task 2: Merge two objects
 function mergeObjects(obj1, obj2) {
-   // Implement your solution here
-}
+    // Implement your solution here
+ 
+    /* I decided to use the spread operators since using the custom merging has the same time complexity. But this is more readable for the same functionaluty and perfomance
+    unless use case changes and needs an algorithm that needs some customization*/
+    const merged = { ...obj1, ...obj2 };
+     return merged;
+ }
 
 // --- Section 2: Scenario-Based Questions (60 points) ---
 
