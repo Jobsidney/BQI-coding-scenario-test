@@ -158,7 +158,20 @@ function mergeObjects(obj1, obj2) {
 // Scenario 1: Debugging
 function incrementArray(arr) {
     // Implement your solution here
+    /* NB!!: This section had no code to debugg, so i assumed there was an issue with the increment,,
+     and i also added my own code to illustrate the array increment where each interger is 
+    being incremented to a value 1 step above it*/
+    if (!arr.every(Number.isInteger)) {
+        return "Error: Array must contain integers only";
+      }
+      for (let i = 0; i < arr.length; i++) {
+        arr[i]++;
+      }
+    
+      return arr;
 }
+
+console.log(incrementArray([4,3,4,1,6,7,8]))
 
 // Scenario 2: Closures
 function outer() {
